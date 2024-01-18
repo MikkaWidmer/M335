@@ -55,7 +55,6 @@ public class StepsFragment extends Fragment {
         }
 
 
-
         @Override
         protected void onResume() {
             super.onResume();
