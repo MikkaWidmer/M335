@@ -1,6 +1,7 @@
 package com.example.bottomnavyt;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -25,9 +26,7 @@ import android.widget.Toast;
 
 import com.mikhaellopez.circularprogressbar.CircularProgressBar;
 
-public class StepsFragment extends Fragment {
-
-    public class Steps extends AppCompatActivity implements SensorEventListener {
+public class StepsFragment extends Fragment implements SensorEventListener{
 
         SharedPreferences sharedPref;
         final String PREVIOUS_TOTAL_STEPS = "previousTotalSteps";
@@ -37,38 +36,26 @@ public class StepsFragment extends Fragment {
         private float totalSteps = 0;
         private float previousTotalSteps = 0;
 
+        public View view;
+
         @RequiresApi(api = Build.VERSION_CODES.Q)
         @Override
-        protected void onCreate(Bundle savedInstanceState) {
+        public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_main);
-
-            if(ContextCompat.checkSelfPermission(this,
-                    Manifest.permission.ACTIVITY_RECOGNITION) == PackageManager.PERMISSION_DENIED){
-                requestPermissions(new String[]{Manifest.permission.ACTIVITY_RECOGNITION}, 0);
-            } else {
-            }
-
-            loadData();
-            resetSteps();
-            sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+            sensorManager = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
         }
 
 
 
         @Override
-        protected void onResume() {
+        public void onResume() {
             super.onResume();
             running = true;
-
             Sensor stepSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
-
             if (stepSensor == null) {
                 Log.d("MainActivity","No Sensor detected");
-                Toast.makeText(this, "No Sensor detected", Toast.LENGTH_SHORT).show();
             } else {
                 Log.d("MainActivity","Has Sensor");
-                Toast.makeText(this, "Has Sensor", Toast.LENGTH_SHORT).show();
                 sensorManager.registerListener(this, stepSensor, SensorManager.SENSOR_DELAY_UI);
             }
         }
@@ -78,21 +65,18 @@ public class StepsFragment extends Fragment {
             if (event != null && running) {
                 totalSteps = event.values[0];
 
-                Toast.makeText(this, "on sensor change = " + totalSteps , Toast.LENGTH_SHORT).show();
-
                 float currentSteps = totalSteps - previousTotalSteps;
-                TextView stepsTaken = findViewById(R.id.stepsTaken);
+                TextView stepsTaken = view.findViewById(R.id.stepsTaken);
                 stepsTaken.setText(String.valueOf((int) currentSteps));
 
-                CircularProgressBar circularProgressBar = findViewById(R.id.circularProgressBar);
+                CircularProgressBar circularProgressBar = view.findViewById(R.id.circularProgressBar);
                 circularProgressBar.setProgressWithAnimation((float) currentSteps);
             }
         }
 
         protected void resetSteps() {
-            TextView stepsTaken = findViewById(R.id.stepsTaken);
+            TextView stepsTaken = view.findViewById(R.id.stepsTaken);
             stepsTaken.setOnClickListener(OnClickListener -> {
-                Toast.makeText(this, "Long tap to reset steps taken.", Toast.LENGTH_SHORT).show();
 
                 previousTotalSteps = totalSteps;
                 stepsTaken.setText(String.valueOf(0));
@@ -101,14 +85,14 @@ public class StepsFragment extends Fragment {
         }
 
         private void saveData() {
-            sharedPref = getSharedPreferences("mySharedPrefs", Context.MODE_PRIVATE);
+            SharedPreferences sharedPref = getActivity().getSharedPreferences("mySharedPrefs", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPref.edit();
             editor.putFloat(PREVIOUS_TOTAL_STEPS, previousTotalSteps);
             editor.apply();
         }
 
         private void loadData() {
-            sharedPref = getSharedPreferences("mySharedPrefs", Context.MODE_PRIVATE);
+            SharedPreferences sharedPref = getActivity().getSharedPreferences("mySharedPrefs", Context.MODE_PRIVATE);
             float savedNumber = sharedPref.getFloat(PREVIOUS_TOTAL_STEPS, 0);
             Log.d("MainActivity", "savedNumber = " + savedNumber);
             previousTotalSteps = savedNumber;
@@ -116,13 +100,12 @@ public class StepsFragment extends Fragment {
 
         @Override
         public void onAccuracyChanged(Sensor sensor, int accuracy) {
-
         }
-    }
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_steps, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        view = inflater.inflate(R.layout.fragment_steps, container, false);
+        loadData();
+        resetSteps();
+        return view;
     }
 }
