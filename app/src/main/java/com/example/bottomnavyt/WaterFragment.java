@@ -3,17 +3,15 @@ package com.example.bottomnavyt;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.util.Locale;
+import androidx.fragment.app.Fragment;
+
+import com.mikhaellopez.circularprogressbar.CircularProgressBar;
 
 public class WaterFragment extends Fragment {
 
@@ -22,6 +20,7 @@ public class WaterFragment extends Fragment {
 
     private TextView waterTextView;
     private Button plusWater;
+    private CircularProgressBar circularProgressBarWater;
 
     private float waterDrink = 0.0f;
     private SharedPreferences sharedPreferences;
@@ -34,6 +33,7 @@ public class WaterFragment extends Fragment {
         // Initialize views
         waterTextView = view.findViewById(R.id.waterDrink);
         plusWater = view.findViewById(R.id.plusWater);
+        circularProgressBarWater = view.findViewById(R.id.progressWater22);
 
         // Initialize SharedPreferences
         sharedPreferences = requireActivity().getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
@@ -48,6 +48,7 @@ public class WaterFragment extends Fragment {
         // Restore the counter value from SharedPreferences
         waterDrink = sharedPreferences.getFloat(KEY_WATER, 0.0f);
         updateWaterText();
+        updateCircularProgressBar();
 
         return view;
     }
@@ -62,11 +63,17 @@ public class WaterFragment extends Fragment {
     }
 
     private void incrementWater() {
-        waterDrink += 0.5f;
+        waterDrink += 0.1f; // Increment by 0.5 each time the button is clicked
         updateWaterText();
+        updateCircularProgressBar();
     }
 
     private void updateWaterText() {
-        waterTextView.setText(String.format(Locale.getDefault(), "%.1f Liter", waterDrink));
+        waterTextView.setText(String.format("%.1f Liter", waterDrink));
+    }
+
+    private void updateCircularProgressBar() {
+        float progress = (waterDrink / 3.0f) * 100; // Assuming the max is 2500, adjust accordingly
+        circularProgressBarWater.setProgressWithAnimation(waterDrink);
     }
 }
