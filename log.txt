@@ -1,0 +1,53 @@
+commit cb46c0328fe972fea49f4776bebb96f77dbfd160
+Author: Blackout1311 <mikka.widmer@gmx.ch>
+Date:   Fri Jan 19 13:57:44 2024 +0100
+
+    added the notification
+
+commit 50a81f48cda2569cbd00d6400a9b0a18acf61407
+Author: Blackout1311 <mikka.widmer@gmx.ch>
+Date:   Fri Jan 19 13:22:11 2024 +0100
+
+    fixed water progressbar lag
+
+commit 12a20ac3341a6770abac8ae3e2670595b950b6f2
+Author: Blackout1311 <mikka.widmer@gmx.ch>
+Date:   Fri Jan 19 11:53:01 2024 +0100
+
+    fixed Stepcounter
+
+commit e3c3d870f6be0fff73eea6970a4c28340ab48221
+Author: Blackout1311 <mikka.widmer@gmx.ch>
+Date:   Fri Jan 19 10:29:45 2024 +0100
+
+    added a Water reset on the button
+
+commit 644a2ebe5cb5893d01da9e6d5d6bf1fc56cc1409
+Author: Blackout1311 <mikka.widmer@gmx.ch>
+Date:   Fri Jan 19 09:37:16 2024 +0100
+
+    changed the maximum for the progressbar in the Water section
+
+commit bb8578a8cd7278b4f81928bb698ebbcff5730533
+Author: Blackout1311 <mikka.widmer@gmx.ch>
+Date:   Fri Jan 19 08:55:48 2024 +0100
+
+    added the function to the drink water button
+
+commit 0a12373e7e8ca4aae2b00925a05c15198108aa80
+Author: Blackout1311 <mikka.widmer@gmx.ch>
+Date:   Thu Jan 18 21:24:57 2024 +0100
+
+    added the progress bar on the water page
+
+commit 053904428e33de369cafed30a99c29e5fadbf949
+Author: Blackout1311 <mikka.widmer@gmx.ch>
+Date:   Thu Jan 18 20:42:01 2024 +0100
+
+    added the step counter to my menu view
+
+commit 4ce562dae920834bab629c61239b2a391c16fafd
+Author: Blackout1311 <mikka.widmer@gmx.ch>
+Date:   Thu Jan 18 16:09:51 2024 +0100
+
+    initial commit

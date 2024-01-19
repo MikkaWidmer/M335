@@ -69,7 +69,7 @@ public class NotificationFragment extends Fragment {
 
         // Build the notification
         NotificationCompat.Builder builder = new NotificationCompat.Builder(getActivity(), "your_channel_id")
-                .setSmallIcon(R.drawable.ic_launcher_foreground) // Set your app's icon here
+                .setSmallIcon(R.drawable.water_glass_svgrepo_com) // Set your app's icon here
                 .setContentTitle("Drink Water Reminder")
                 .setContentText("Remember to drink water now!")
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
