@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".WaterFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -21,7 +22,7 @@
 
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/plusWater"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Button"
@@ -29,7 +30,7 @@
             android:layout_marginTop="500dp"/>
 
         <TextView
-            android:id="@+id/waterDrunken"
+            android:id="@+id/waterDrink"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
