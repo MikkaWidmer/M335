@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
@@ -45,6 +46,14 @@ public class WaterFragment extends Fragment {
             }
         });
 
+        plusWater.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                resetWater();
+                return true; // true bedeutet, dass das Ereignis abgefangen wurde und nicht weitergeleitet wird
+            }
+        });
+
         // Restore the counter value from SharedPreferences
         waterDrink = sharedPreferences.getFloat(KEY_WATER, 0.0f);
         updateWaterText();
@@ -52,6 +61,7 @@ public class WaterFragment extends Fragment {
 
         return view;
     }
+
 
     @Override
     public void onPause() {
@@ -66,6 +76,13 @@ public class WaterFragment extends Fragment {
         waterDrink += 0.1f; // Increment by 0.5 each time the button is clicked
         updateWaterText();
         updateCircularProgressBar();
+    }
+
+    private void resetWater() {
+        waterDrink = 0.0f;
+        updateWaterText();
+        updateCircularProgressBar();
+        Toast.makeText(requireContext(), "Wasserzähler zurückgesetzt", Toast.LENGTH_SHORT).show();
     }
 
     private void updateWaterText() {
