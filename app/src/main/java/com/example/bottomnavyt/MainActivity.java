@@ -30,11 +30,8 @@ public class MainActivity extends AppCompatActivity {
                 requestPermissions(new String[]{Manifest.permission.ACTIVITY_RECOGNITION}, 0);
             }
         }
-
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
-
             switch (item.getItemId()){
-
                 case R.id.steps:
                     replaceFragment(new StepsFragment());
                     break;

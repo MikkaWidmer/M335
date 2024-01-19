@@ -30,22 +30,18 @@ public class WaterFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_water, container, false);
-
         // Initialize views
         waterTextView = view.findViewById(R.id.waterDrink);
         plusWater = view.findViewById(R.id.plusWater);
         circularProgressBarWater = view.findViewById(R.id.progressWater22);
-
         // Initialize SharedPreferences
         sharedPreferences = requireActivity().getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
-
         plusWater.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 incrementWater();
             }
         });
-
         plusWater.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
