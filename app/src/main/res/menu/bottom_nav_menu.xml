@@ -6,9 +6,9 @@
         android:icon="@drawable/baseline_directions_walk_24"
         android:title="Steps" />
     <item
-        android:id="@+id/meals"
-        android:icon="@drawable/baseline_fastfood_24"
-        android:title="Meals" />
+        android:id="@+id/notification"
+        android:icon="@drawable/baseline_assignment_late_24"
+        android:title="Notification" />
     <item
         android:id="@+id/water"
         android:icon="@drawable/water_glass_svgrepo_com"

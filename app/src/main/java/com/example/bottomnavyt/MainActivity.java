@@ -38,8 +38,8 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.steps:
                     replaceFragment(new StepsFragment());
                     break;
-                case R.id.meals:
-                    replaceFragment(new MealsFragment());
+                case R.id.notification:
+                    replaceFragment(new NotificationFragment());
                     break;
                 case R.id.water:
                     replaceFragment(new WaterFragment());

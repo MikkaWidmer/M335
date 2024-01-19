@@ -3,15 +3,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MealsFragment">
+    tools:context=".NotificationFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Meals"
+        android:text="Notification"
         android:textSize="26dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="100dp"/>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="in 4 Hours"
+        android:layout_gravity="center"/>
 
 </FrameLayout>
